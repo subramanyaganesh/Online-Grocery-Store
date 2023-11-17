@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Input } from 'antd';
 
 import { useNavigate } from "react-router-dom";
 import {
@@ -17,7 +18,7 @@ import Login from "../pages/Login/Login";
 import { removeAllCartItems } from "../../redux/actions/cartActions";
 
 const headerStyle = {
-  backgroundColor: "#002B80",
+  backgroundColor: "#F9F6EE",
   display: "flex",
   flexDirection: "row",
   justifyContent: "flex-end",
@@ -49,6 +50,8 @@ const Header = () => {
     navigate("/");
   };
 
+  const [searchQuery, setSearchQuery] = useState("");
+
   const handleNavigation = (page) => {
     if (!isEmpty(loggedInUserId)) {
       navigate(`/${page}`, {
@@ -59,10 +62,25 @@ const Header = () => {
     handleLoginModal();
   };
 
+  const handleSearch = () => {
+    // You can perform any search-related logic here
+    // For now, let's navigate to a search results page with the search query
+    navigate(`/search?query=${searchQuery}`);
+  };
+  
+
   return (
     <div style={headerStyle}>
       {!isEmpty(loggedInUserId) ? (
         <>
+        <Input
+            style={{ width: 200, margin: 20, marginRight: 10 }}
+            className="search-input"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onPressEnter={handleSearch}
+          />
           <p style={welcomeText}>Hello {user.username}</p>
           <Button
             buttonName="Home"
@@ -95,6 +113,14 @@ const Header = () => {
           )}
         />
       )}
+      <Input
+            style={{ width: 200, margin: 20, marginRight: 10 }}
+            className="search-input"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onPressEnter={handleSearch}
+          />
       <Button
         buttonName={`Cart (${cart?.length})`}
         onClick={() => handleNavigation("cart")}

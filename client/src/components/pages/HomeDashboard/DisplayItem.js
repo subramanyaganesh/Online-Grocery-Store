@@ -27,7 +27,7 @@ const styles = {
     height: 100,
   },
   buttonStyle: {
-    backgroundColor: "#002B80",
+    backgroundColor: "#F9F6EE",
     paddingTop: 0,
     paddingBottom: 0,
   },

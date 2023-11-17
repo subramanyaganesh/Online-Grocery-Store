@@ -252,7 +252,7 @@ const Order = () => {
 
 const styles = {
   title: {
-    color: "#002B80",
+    color: "black",
     paddingLeft: 40,
   },
   divider: {
@@ -260,7 +260,7 @@ const styles = {
     height: 2,
   },
   buttonStyle: {
-    backgroundColor: "#002B80",
+    backgroundColor: "#F9F6EE",
     marginBottom: 20,
   },
   form: {

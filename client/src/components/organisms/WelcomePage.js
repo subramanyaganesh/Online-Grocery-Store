@@ -176,7 +176,7 @@ const styles = {
     paddingRight: 40,
   },
   title: {
-    color: "#002B80",
+    color: "#000",
     paddingLeft: 40,
   },
   divider: {
@@ -199,7 +199,7 @@ const styles = {
     borderRadius: 12,
   },
   buttonStyle: {
-    backgroundColor: "#002B80",
+    backgroundColor: "#F9F6EE",
   },
   formItem: {
     display: "flex",

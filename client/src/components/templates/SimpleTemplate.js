@@ -27,7 +27,7 @@ const SimpleTemplate = ({ children }) => {
 const styles = {
   contentStyle: {
     height: window.innerHeight - 80,
-    backgroundColor: "#002B80",
+    backgroundColor: "#fff",
     display: "flex",
     flex: 1,
     flexDirection: "row",

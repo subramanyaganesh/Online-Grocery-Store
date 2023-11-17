@@ -23,7 +23,7 @@ const styles = {
     alignSelf: "center",
   },
   categoryContainer: {
-    backgroundColor: "#99CCFF",
+    backgroundColor: "#F9F6EE",
     textAlign: "center",
     borderRadius: 12,
     padding: 5,
