@@ -81,7 +81,7 @@ const Header = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
             onPressEnter={handleSearch}
           />
-          <p style={welcomeText}>Hello {user.username}</p>
+          <p style={welcomeText}>Hello, {user.username}</p>
           <Button
             buttonName="Home"
             onClick={() => handleNavigation("")}

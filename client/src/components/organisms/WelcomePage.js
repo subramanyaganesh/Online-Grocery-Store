@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { categories, userTypes } from "../../constants";
 
-import SmartHomes from "../../assets/smartHomes.png";
+import SmartHomes from "../../assets/grocery.jpg";
 import Button from "./Button";
 import { cancelOrder, removeProduct } from "../../redux/actions/cartActions";
 import Register from "../pages/Login/Register";
@@ -44,7 +44,7 @@ const WelcomePage = () => {
 
   const renderCustomerHome = () => (
     <div style={styles.container}>
-      <h1>Welcome To Smart Homes</h1>
+      <h1>Online Grocery Store</h1>
       <img src={SmartHomes} alt="smart homes" style={styles.imageStyles} />
       <p>High quality products, with quality delivery</p>
       <h3>Please check the left navigation to go through amazing products</h3>

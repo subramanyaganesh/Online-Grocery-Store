@@ -4,7 +4,15 @@ import { Button } from "../../organisms";
 const DisplayItem = ({ item, onClick }) => {
   return (
     <div style={styles.container}>
-      {item.name}
+      <div >
+        <p style={{ fontWeight: "bold" }}>{item.name}</p>
+        <p
+          style={{ color: "green", fontFamily: "cursive", fontWeight: "bold" }}
+        >
+          ${item.price}
+        </p>
+      </div>
+
       <img src={item?.image} alt={item.name} style={styles.image} />
       <Button
         buttonName="Add to Cart"
