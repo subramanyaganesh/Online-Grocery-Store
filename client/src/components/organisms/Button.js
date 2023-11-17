@@ -13,7 +13,7 @@ const buttonContainer = (customStyles) => ({
 });
 const buttonText = (customStyles) => ({
   fontSize: 15,
-  color: "#fff",
+  color: "#000",
   ...customStyles,
 });
 

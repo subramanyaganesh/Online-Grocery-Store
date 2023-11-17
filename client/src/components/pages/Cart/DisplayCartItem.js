@@ -35,7 +35,7 @@ const styles = {
     ...customStyles,
   }),
   buttonStyle: {
-    backgroundColor: "#002B80",
+    backgroundColor: "#F9F6EE",
   },
 };
 export default DisplayCartItem;

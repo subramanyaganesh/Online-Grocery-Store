@@ -237,7 +237,7 @@ const Login = ({ isOpen, onClose }) => {
 
 const styles = {
   buttonStyles: {
-    backgroundColor: "#002B80",
+    backgroundColor: "#F9F6EE",
     paddingTop: 0,
     paddingBottom: 0,
     marginTop: 16,

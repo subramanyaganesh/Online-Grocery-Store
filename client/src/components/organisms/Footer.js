@@ -2,8 +2,8 @@ import React from "react";
 
 const footerStyle = {
   textAlign: "center",
-  backgroundColor: "#4D88FF",
-  color: "#fff",
+  backgroundColor: "#F9F6EE",
+  color: "#000",
   position: "absolute",
   bottom: "0",
   width: "100%",

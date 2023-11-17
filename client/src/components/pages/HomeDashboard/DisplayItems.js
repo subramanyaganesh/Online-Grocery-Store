@@ -25,7 +25,7 @@ const DisplayItems = ({ category, handleCart }) => {
 
 const styles = {
   title: {
-    color: "#002B80",
+    color: "black",
     paddingLeft: 40,
   },
   divider: {
