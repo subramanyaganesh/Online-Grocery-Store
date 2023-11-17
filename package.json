@@ -1,19 +1,19 @@
 {
-  "name": "pern-store",
+  "name": "online-grocery-store",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
-  "dependencies": {
-    "concurrently": "^7.6.0"
-  },
-  "devDependencies": {},
   "scripts": {
-    "start": "node server",
-    "server": "cd server && nodemon",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/subramanyaganesh/Online-Grocery-Store.git"
+  },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "bugs": {
+    "url": "https://github.com/subramanyaganesh/Online-Grocery-Store/issues"
+  },
+  "homepage": "https://github.com/subramanyaganesh/Online-Grocery-Store#readme"
 }
