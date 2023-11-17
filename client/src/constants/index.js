@@ -1,78 +1,72 @@
-import RemoBell from "../assets/doorBells/remo_bell.jpeg";
-import RemoMiniBell from "../assets/doorBells/remo_mini_bell.jpeg";
-import BlinkBell from "../assets/doorBells/blink_bell.jpeg";
-import BlinkMiniBell from "../assets/doorBells/blink_mini_bell.jpeg";
-import RingBell from "../assets/doorBells/ring_bell_mini.jpeg";
-import RingMiniBell from "../assets/doorBells/ring_bell_mini.jpeg";
-import lock1 from "../assets/doorLocks/doorlock-1.jpg";
-import lock2 from "../assets/doorLocks/doorlock-2.jpg";
-import lock3 from "../assets/doorLocks/doorlock-3.png";
-import lock4 from "../assets/doorLocks/doorlock-4.jpg";
-import lock5 from "../assets/doorLocks/doorlock-5.jpg";
-import speaker1 from "../assets/speakers/echo.jpeg";
-import speaker2 from "../assets/speakers/echo2.jpeg";
-import speaker3 from "../assets/speakers/homepod.jpg";
-import speaker4 from "../assets/speakers/homepod_mini.jpg";
-import speaker5 from "../assets/speakers/nest.jpg";
-import speaker6 from "../assets/speakers/pod.jpg";
-import light1 from "../assets/lightnings/light-1.jpg";
-import light2 from "../assets/lightnings/light-2.jpg";
-import light3 from "../assets/lightnings/light-3.jpg";
-import light4 from "../assets/lightnings/light-4.jpg";
-import thermo1 from "../assets/thermo/th1.jpg";
-import thermo2 from "../assets/thermo/th2.jpg";
-import thermo3 from "../assets/thermo/th3.jpg";
-import thermo4 from "../assets/thermo/th4.jpg";
-import a1 from "../assets/accessories/a1.jpeg";
-import a2 from "../assets/accessories/a2.jpeg";
-import a3 from "../assets/accessories/a3.jpeg";
-import a4 from "../assets/accessories/a4.jpg";
+import apple from "../assets/fruits/apple.jpg";
+import cherry from "../assets/fruits/cherry.jpg";
+import orange from "../assets/fruits/orange.jpg";
+import pineapple from "../assets/fruits/pineapple.jpg";
+import strawberry from "../assets/fruits/strawberry.jpg";
+import watermelon from "../assets/fruits/watermelon.jpg";
+import broccoli from "../assets/vegetable/broccoli.jpg";
+import carrot from "../assets/vegetable/carrot.png";
+import cauliflower from "../assets/vegetable/cauli.jpg";
+import tomato from "../assets/vegetable/tomato.jpg";
+import spinach from "../assets/vegetable/spinach.jpg";
+import cheese from "../assets/dairy/cheese.jpg";
+import curd from "../assets/dairy/curd.jpg";
+import milk from "../assets/dairy/milk.jpg";
+import yogurt from "../assets/dairy/yogurt.jpg";
+import icecream from "../assets/dairy/icecream.jpg";
+import coffemate from "../assets/dairy/coffemate.jpg";
+import rice from "../assets/treat/rice.jpg";
+import choci from "../assets/treat/choci.jpg";
+import lolli from "../assets/treat/lolli.jpg";
+import bourbon from "../assets/treat/bourbon.jpg";
+
+
 
 
 
 const items = [
   {
     id: "db1",
-    name: "Remo Doorbell",
-    price: 99.99,
+    name: "Apple",
+    price: 9.99,
     manufacturer: "Remo",
     discount: 15,
     // accessories: ["a1", "a2", "a3", "a4"],
     available : 1,
     onSale : 1,
     manufacturerRebate : 1,
-    image: RemoBell,
+    image: apple,
     category: 1,
   },
   {
     id: "db2",
-    name: "Remo Doorbell Mini",
-    price: 59.99,
+    name: "Cherry",
+    price: 5.99,
     manufacturer: "Remo",
     discount: 10,
     // accessories: ["a1", "a2", "a3", "a4"],
     available : 1,
     onSale : 1,
     manufacturerRebate : 1,
-    image: RemoMiniBell,
+    image: cherry,
     category: 1,
   },
   {
     id: "db3",
-    name: "Blink Doorbell",
-    price: 449.99,
+    name: "Orange",
+    price: 4.99,
     manufacturer: "Blink",
     discount: 50,
     // accessories: ["a5", "a6"],
     available : 1,
     onSale : 1,
     manufacturerRebate : 1,
-    image: BlinkBell,
+    image: orange,
     category: 1,
   },
   {
     id: "db4",
-    name: "Blink Doorbell Mini",
+    name: "Pineapple",
     price: 300.99,
     manufacturer: "Blink",
     discount: 25,
@@ -80,55 +74,55 @@ const items = [
     available : 1,
     onSale : 1,
     manufacturerRebate : 1,
-    image: BlinkMiniBell,
+    image: pineapple,
     category: 1,
   },
   {
     id: "db5",
-    name: "Ring Doorbell",
-    price: 349.99,
+    name: "Strawberry",
+    price: 3.99,
     manufacturer: "Ring",
     discount: 30,
     // accessories: ["a7", "a8"],
     available : 1,
     onSale : 1,
     manufacturerRebate : 1,
-    image: RingBell,
+    image: strawberry,
     category: 1,
   },
   {
     id: "db6",
-    name: "Ring Doorbell Mini",
-    price: 299.99,
+    name: "Watermelon",
+    price: 2.99,
     manufacturer: "Ring",
     discount: 15,
     // accessories: ["a7", "a8"],
     available : 1,
     onSale : 1,
     manufacturerRebate : 1,
-    image: RingMiniBell,
+    image: watermelon,
     category: 1,
   },
   {
     id: "dl1",
-    name: "Door Lock 1",
-    price: 99.99,
+    name: "Broccoli",
+    price: 9.99,
     manufacturer: "Remo",
     discount: 15,
     // accessories: ["a1", "a2", "a3", "a4"],
     available : 1,
     onSale : 1,
     manufacturerRebate : 1,
-    image: lock1,
+    image: broccoli,
     category: 2,
   },
   {
     id: "dl2",
-    name: "Door Lock 2",
-    price: 59.99,
+    name: "Carrot",
+    price: 5.99,
     manufacturer: "Remo",
     discount: 10,
-    image: lock2,
+    image: carrot,
     // accessories: ["a1", "a2", "a3", "a4"],
     available : 1,
     onSale : 1,
@@ -137,11 +131,11 @@ const items = [
   },
   {
     id: "dl3",
-    name: "Door Lock 3",
-    price: 449.99,
+    name: "Caulliflower",
+    price: 4.99,
     manufacturer: "Blink",
     discount: 50,
-    image: lock3,
+    image: cauliflower,
     // accessories: ["a5", "a6"],
     available : 1,
     onSale : 1,
@@ -150,11 +144,11 @@ const items = [
   },
   {
     id: "dl4",
-    name: "Door Lock 4",
-    price: 300.99,
+    name: "Tomato",
+    price: 3.99,
     manufacturer: "Blink",
     discount: 25,
-    image: lock4,
+    image: tomato,
     // accessories: ["a5", "a6"],
     available : 1,
     onSale : 1,
@@ -163,11 +157,11 @@ const items = [
   },
   {
     id: "dl5",
-    name: "Door Lock 5",
-    price: 349.99,
+    name: "Spinach",
+    price: 3.99,
     manufacturer: "Ring",
     discount: 30,
-    image: lock5,
+    image: spinach,
     // accessories: ["a7", "a8"],
     available : 1,
     onSale : 1,
@@ -176,11 +170,11 @@ const items = [
   },
   {
     id: "s1",
-    name: "Echo Speaker",
-    price: 99.99,
+    name: "Cheese",
+    price: 9.99,
     manufacturer: "Amazon",
     discount: 15,
-    image: speaker1,
+    image: cheese,
     // accessories: ["a1", "a2", "a3", "a4"],
     available : 1,
     onSale : 1,
@@ -189,11 +183,11 @@ const items = [
   },
   {
     id: "s2",
-    name: "Echo nextgen",
-    price: 59.99,
+    name: "Curd",
+    price: 5.99,
     manufacturer: "Amazon",
     discount: 10,
-    image: speaker2,
+    image: curd,
     // accessories: ["a1", "a2", "a3", "a4"],
     available : 1,
     onSale : 1,
@@ -202,11 +196,11 @@ const items = [
   },
   {
     id: "s3",
-    name: "Homepod",
-    price: 449.99,
+    name: "Milk",
+    price: 4.99,
     manufacturer: "Google",
     discount: 50,
-    image: speaker3,
+    image: milk,
     // accessories: ["a5", "a6"],
     available : 1,
     onSale : 1,
@@ -215,11 +209,11 @@ const items = [
   },
   {
     id: "s4",
-    name: "Homepod Mini",
-    price: 300.99,
+    name: "Yogurt",
+    price: 0.99,
     manufacturer: "Google",
     discount: 25,
-    image: speaker4,
+    image: yogurt,
     // accessories: ["a5", "a6"],
     available : 1,
     onSale : 1,
@@ -228,11 +222,11 @@ const items = [
   },
   {
     id: "s5",
-    name: "nest",
+    name: "Ice Cream",
     price: 349.99,
     manufacturer: "Google",
     discount: 30,
-    image: speaker5,
+    image: icecream,
     // accessories: ["a7", "a8"],
     available : 1,
     onSale : 1,
@@ -241,11 +235,11 @@ const items = [
   },
   {
     id: "s6",
-    name: "Pod",
+    name: "Coffee Mate",
     price: 299.99,
     manufacturer: "Apple",
     discount: 15,
-    image: speaker6,
+    image: coffemate,
     // accessories: ["a7", "a8"],
     available : 1,
     onSale : 1,
@@ -254,11 +248,11 @@ const items = [
   },
   {
     id: "l1",
-    name: "Smart Light",
-    price: 99.99,
+    name: "Rice Cake",
+    price: 9.99,
     manufacturer: "Philips",
     discount: 15,
-    image: light1,
+    image: rice,
     // accessories: ["a1", "a2", "a3", "a4"],
     available : 1,
     onSale : 1,
@@ -267,11 +261,11 @@ const items = [
   },
   {
     id: "l2",
-    name: "Smart Light nextgen",
-    price: 59.99,
+    name: "Choci",
+    price: 5.99,
     manufacturer: "Philips",
     discount: 10,
-    image: light2,
+    image: choci,
     // accessories: ["a1", "a2", "a3", "a4"],
     available : 1,
     onSale : 1,
@@ -280,11 +274,11 @@ const items = [
   },
   {
     id: "l3",
-    name: "Smart Light Mini",
+    name: "Lollipop",
     price: 449.99,
     manufacturer: "Philips",
     discount: 50,
-    image: light3,
+    image: lolli,
     // accessories: ["a5", "a6"],
     available : 1,
     onSale : 1,
@@ -293,164 +287,16 @@ const items = [
   },
   {
     id: "l4",
-    name: "Smart Light Mini 2",
-    price: 300.99,
+    name: "Bourbon",
+    price: 3.99,
     manufacturer: "Philips",
     discount: 25,
-    image: light4,
+    image: bourbon,
     // accessories: ["a5", "a6"],
     available : 1,
     onSale : 1,
     manufacturerRebate : 1,
     category: 4,
-  },
-  {
-    id: "t1",
-    name: "EchoBees Thermostat",
-    price: 99.99,
-    manufacturer: "EchoBees",
-    discount: 15,
-    image: thermo1,
-    // accessories: ["a1", "a2", "a3", "a4"],
-    available : 1,
-    onSale : 1,
-    manufacturerRebate : 1,
-    category: 5,
-  },
-  {
-    id: "t2",
-    name: "Nest Thermostat",
-    price: 59.99,
-    manufacturer: "Nest",
-    discount: 10,
-    image: thermo2,
-    // accessories: ["a1", "a2", "a3", "a4"],
-    available : 1,
-    onSale : 1,
-    manufacturerRebate : 1,
-    category: 5,
-  },
-  {
-    id: "t3",
-    name: "Nest Thermostat Mini",
-    price: 449.99,
-    manufacturer: "Nest",
-    discount: 50,
-    image: thermo3,
-    // accessories: ["a5", "a6"],
-    available : 1,
-    onSale : 1,
-    manufacturerRebate : 1,
-    category: 5,
-  },
-  {
-    id: "t4",
-    name: "Honeywell Thermostat",
-    price: 300.99,
-    manufacturer: "Honeywell",
-    discount: 25,
-    image: thermo4,
-    // accessories: ["a5", "a6"],
-    available : 1,
-    onSale : 1,
-    manufacturerRebate : 1,
-    category: 5,
-  },
-  {
-    id: "a1",
-    name: "Door Bell Stand",
-    price: 15,
-    manufacturer: "Remo",
-    discount: 2,
-    image: a1,
-    category: 6,
-    available : 1,
-    onSale : 1,
-    manufacturerRebate : 1,
-  },
-  {
-    id: "a2",
-    name: "Door Bell Powerkit",
-    price: 14,
-    manufacturer: "Remo",
-    discount: 1,
-    image: a2,
-    category: 6,
-    available : 1,
-    onSale : 1,
-    manufacturerRebate : 1,
-  },
-  {
-    id: "a3",
-    name: "Door Bell Warranty 3 years",
-    price: 10,
-    manufacturer: "Remo",
-    discount: 1,
-    image: a3,
-    category: 6,
-    available : 1,
-    onSale : 1,
-    manufacturerRebate : 1,
-  },
-  {
-    id: "a4",
-    name: "Door Bell Warranty 5 years",
-    price: 12,
-    manufacturer: "Remo",
-    discount: 1,
-    image: a4,
-    category: 6,
-    available : 1,
-    onSale : 1,
-    manufacturerRebate : 1,
-  },
-  {
-    id: "a5",
-    name: "Blink Door Bell Warranty 5 years",
-    price: 12,
-    manufacturer: "Blink",
-    discount: 1,
-    image: a4,
-    category: 6,
-    available : 1,
-    onSale : 1,
-    manufacturerRebate : 1,
-  },
-  {
-    id: "a6",
-    name: "Blink Door Bell Warranty 3 years",
-    price: 10,
-    manufacturer: "Blink",
-    discount: 1,
-    image: a4,
-    category: 6,
-    available : 1,
-    onSale : 1,
-    manufacturerRebate : 1,
-  },
-  {
-    id: "a7",
-    name: "Ring Door Bell Warranty 3 years",
-    price: 10,
-    manufacturer: "Ring",
-    discount: 1,
-    image: a4,
-    category: 6,
-    available : 1,
-    onSale : 1,
-    manufacturerRebate : 1,
-  },
-  {
-    id: "a8",
-    name: "Ring Door Bell Warranty 5 years",
-    price: 12,
-    manufacturer: "Ring",
-    discount: 1,
-    image: a4,
-    category: 6,
-    available : 1,
-    onSale : 1,
-    manufacturerRebate : 1,
   },
 ];
 
@@ -462,8 +308,8 @@ const categories = [
   },
   {
     id: 2,
-    label: "Vegitables",
-    title: "Fresh Vegitables",
+    label: "Vegetables",
+    title: "Fresh Vegetables",
   },
   {
     id: 3,

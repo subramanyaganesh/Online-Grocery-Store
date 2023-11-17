@@ -39,7 +39,7 @@ const styles = {
     margin: 16,
   },
   gridItem: {
-    border: "1px solid #ccc",
+    border: "1px solid white",
     borderRadius: 12,
     padding: 16,
     textAlign: "center",

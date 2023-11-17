@@ -14,7 +14,7 @@ const footerStyle = {
 };
 
 const Footer = () => {
-  return <div style={footerStyle}>All rights reserved @ Smart Homes ©2023</div>;
+  return <div style={footerStyle}>All rights reserved ©2023</div>;
 };
 
 export default Footer;

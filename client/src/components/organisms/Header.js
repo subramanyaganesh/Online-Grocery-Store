@@ -25,7 +25,7 @@ const headerStyle = {
 };
 
 const welcomeText = {
-  color: "#fff",
+  color: "#000",
   fontSize: 18,
   fontWeight: "bold",
   marginTop: 22,
@@ -86,21 +86,21 @@ const Header = () => {
             buttonName="Home"
             onClick={() => handleNavigation("")}
             renderIcon={() => (
-              <HomeOutlined style={{ color: "white", paddingRight: 6 }} />
+              <HomeOutlined style={{ color: "black", paddingRight: 6 }} />
             )}
           />
           <Button
             buttonName="Account"
             onClick={() => handleNavigation("account")}
             renderIcon={() => (
-              <UserOutlined style={{ color: "white", paddingRight: 6 }} />
+              <UserOutlined style={{ color: "black", paddingRight: 6 }} />
             )}
           />
           <Button
             buttonName="Logout"
             onClick={handleLogout}
             renderIcon={() => (
-              <LogoutOutlined style={{ color: "white", paddingRight: 6 }} />
+              <LogoutOutlined style={{ color: "black", paddingRight: 6 }} />
             )}
           />
         </>
@@ -109,23 +109,15 @@ const Header = () => {
           buttonName="Login"
           onClick={handleLoginModal}
           renderIcon={() => (
-            <LoginOutlined style={{ color: "white", paddingRight: 6 }} />
+            <LoginOutlined style={{ color: "black", paddingRight: 6 }} />
           )}
         />
       )}
-      <Input
-            style={{ width: 200, margin: 20, marginRight: 10 }}
-            className="search-input"
-            placeholder="Search..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            onPressEnter={handleSearch}
-          />
       <Button
         buttonName={`Cart (${cart?.length})`}
         onClick={() => handleNavigation("cart")}
         renderIcon={() => (
-          <ShoppingCartOutlined style={{ color: "white", paddingRight: 6 }} />
+          <ShoppingCartOutlined style={{ color: "black", paddingRight: 6 }} />
         )}
       />
       <Login isOpen={isModalOpen} onClose={handleLoginModal} />
