@@ -457,34 +457,24 @@ const items = [
 const categories = [
   {
     id: 1,
-    label: "Door Bells",
-    title: "Smart Door Bells",
+    label: "Fruits",
+    title: "Fresh Fruits",
   },
   {
     id: 2,
-    label: "Door Locks",
-    title: "Smart Door Locks",
+    label: "Vegitables",
+    title: "Fresh Vegitables",
   },
   {
     id: 3,
-    label: "Speakers",
-    title: "Smart Speakers",
+    label: "Dairy",
+    title: "Fresh Dairy",
   },
   {
     id: 4,
-    label: "Lightings",
-    title: "Smart Lightings",
-  },
-  {
-    id: 5,
-    label: "Thermostats",
-    title: "Smart Thermostats",
-  },
-  {
-    id: 6,
-    label: "Accessories",
-    title: "Smart Accessories",
-  },
+    label: "Treats",
+    title: "Sweet Treats",
+  }
 ];
 
 const userTypes = {

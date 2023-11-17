@@ -11,6 +11,16 @@ const DisplayItem = ({ item, onClick }) => {
         buttonStyles={styles.buttonStyle}
         onClick={() => onClick(item?.id)}
       />
+       <Button
+        buttonName="Write Review"
+        buttonStyles={styles.buttonStyle}
+        onClick={() => onClick(item?.id)}
+      />
+       <Button
+        buttonName="Read Review"
+        buttonStyles={styles.buttonStyle}
+        onClick={() => onClick(item?.id)}
+      />
     </div>
   );
 };

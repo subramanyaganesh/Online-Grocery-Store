@@ -20,7 +20,7 @@ const SimpleTemplate = ({ children }) => {
         <SideMenu handleNavigation={handleMenuNavigation} />
         <div style={styles.container}>{children}</div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

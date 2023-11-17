@@ -15,10 +15,13 @@ app.use((req, res, next) => {
 
 // MySQL connection setup (replace with your MySQL credentials)
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'root',
-  database: 'react_db',
+  host: "localhost",
+        user: "root",
+        password: "",
+        database: "react_db",
+        waitForConnections: true,
+        connectionLimit: 10,
+        queueLimit: 0,
 });
 
 // Connect to MySQL
