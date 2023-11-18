@@ -53,7 +53,7 @@ const WelcomePage = () => {
 
   const renderStoreManagerHome = () => (
     <div>
-      <h2 style={styles.title}>Welcome Store Manager, {user?.username}</h2>
+      <h2 style={styles.title}>Welcome Product Supervisor, {user?.username}</h2>
       <div style={styles.divider} />
       <Button
         buttonName="Add Product"
@@ -109,7 +109,7 @@ const WelcomePage = () => {
 
   const renderSalesManagerHome = () => (
     <div>
-      <h2 style={styles.title}>Welcome Sales Manager, {user?.name}</h2>
+      <h2 style={styles.title}>Welcome Sales Supervisor, {user?.name}</h2>
       <div style={styles.divider} />
       <Button
         buttonName="Register Customer"

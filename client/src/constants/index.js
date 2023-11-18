@@ -67,7 +67,7 @@ const items = [
   {
     id: "db4",
     name: "Pineapple",
-    price: 300.99,
+    price: 3.99,
     manufacturer: "Blink",
     discount: 25,
     // accessories: ["a5", "a6"],
@@ -223,7 +223,7 @@ const items = [
   {
     id: "s5",
     name: "Ice Cream",
-    price: 349.99,
+    price: 3.99,
     manufacturer: "Google",
     discount: 30,
     image: icecream,
@@ -236,7 +236,7 @@ const items = [
   {
     id: "s6",
     name: "Coffee Mate",
-    price: 299.99,
+    price: 2.99,
     manufacturer: "Apple",
     discount: 15,
     image: coffemate,
@@ -275,7 +275,7 @@ const items = [
   {
     id: "l3",
     name: "Lollipop",
-    price: 449.99,
+    price: 4.99,
     manufacturer: "Philips",
     discount: 50,
     image: lolli,
