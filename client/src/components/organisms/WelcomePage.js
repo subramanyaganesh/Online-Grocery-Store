@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { useNavigate } from "react-router-dom";
 import { categories, userTypes } from "../../constants";
 
 import SmartHomes from "../../assets/grocery.jpg";
@@ -11,6 +11,7 @@ import UpdateProduct from "../pages/Login/UpdateProductModal";
 
 const WelcomePage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { loggedInUserId , user} = useSelector((state) => state.authReducer);
   // const { users } = useSelector((state) => state.userReducer);
   const { orders, products } = useSelector((state) => state.cartReducer);
@@ -25,17 +26,21 @@ const WelcomePage = () => {
 
   const handleCancelOrder = (orderId) => {
     dispatch(cancelOrder(orderId));
-    alert(`Canceled order ${orderId}`);
+    //alert(`Canceled order ${orderId}`);
   };
 
   const handleDeleteProduct = (productId) => {
     dispatch(removeProduct(productId));
-    alert(`Product deleted ${productId}`);
+    //alert(`Product deleted ${productId}`);
   };
 
   const handleRegisterModal = () => {
     setShowUserRegisterForm(!showUserRegisterForm);
   };
+  const handelAddProduct = () => {
+    navigate("/addProduct");
+  };
+  
 
   const handleUpdateModal = (product) => {
     setShowProductUpdateForm(!showProductUpdateForm);
@@ -53,12 +58,12 @@ const WelcomePage = () => {
 
   const renderStoreManagerHome = () => (
     <div>
-      <h2 style={styles.title}>Welcome Store Manager, {user?.username}</h2>
+      <h2 style={styles.title}>Welcome Product Supervisor, {user?.username}</h2>
       <div style={styles.divider} />
       <Button
         buttonName="Add Product"
         buttonStyles={{ ...styles.buttonStyle, marginLeft: 40, marginTop: 40 }}
-        // onClick={handleRegisterModal}
+         onClick={handelAddProduct}
       />
       <div style={styles.formItem}>
         <label htmlFor="delivery-action" style={styles.label}>
@@ -109,7 +114,7 @@ const WelcomePage = () => {
 
   const renderSalesManagerHome = () => (
     <div>
-      <h2 style={styles.title}>Welcome Sales Manager, {user?.name}</h2>
+      <h2 style={styles.title}>Welcome Sales Supervisor, {user?.username}</h2>
       <div style={styles.divider} />
       <Button
         buttonName="Register Customer"
@@ -119,9 +124,9 @@ const WelcomePage = () => {
       <Button
         buttonName="Add Order"
         buttonStyles={{ ...styles.buttonStyle, marginLeft: 40, marginTop: 10 }}
-        onClick={() =>
-          alert("Please add items to cart and checkout to place an order")
-        }
+        // onClick={() =>
+        //   //alert("Please add items to cart and checkout to place an order")
+        // }
       />
       <h3 style={styles.title}>Orders Placed</h3>
       {orders?.length ? (

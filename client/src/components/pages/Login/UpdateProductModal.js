@@ -15,7 +15,7 @@ const UpdateProduct = ({ isOpen, setModalOpen, product }) => {
 
   const handleUpdate = () => {
     dispatch(updateProduct({ ...product, ...productDetails }));
-    alert("Product Updated Successfully");
+    //alert("Product Updated Successfully");
     handleRegisterNavigation();
   };
 

@@ -9,6 +9,7 @@ const buttonContainer = (customStyles) => ({
   borderRadius: 12,
   backgroundColor: "transparent",
   borderWidth: 0,
+  cursor: "pointer",
   ...customStyles,
 });
 const buttonText = (customStyles) => ({

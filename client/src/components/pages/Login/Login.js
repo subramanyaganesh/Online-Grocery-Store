@@ -5,6 +5,7 @@ import { login } from "../../../redux/actions/authActions";
 import Button from "../../organisms/Button";
 import { addUser } from "../../../redux/actions/userActions";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
@@ -15,57 +16,37 @@ const Login = ({ isOpen, onClose }) => {
 
   const [registerUserName, setRegisterUserName] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
-  const [registerSelectedOption, setRegisterSelectedOption] = useState("customer");
+  const [registerSelectedOption, setRegisterSelectedOption] =
+    useState("customer");
 
   const [isRegisterModalOpen, setRegisterModalOpen] = useState(false);
   const { users, currentUserId } = useSelector((state) => state.userReducer);
 
   const handleLogin = () => {
-
     const uData = {
-      username: username,
-      password: password,
-      usertype: selectedOption,
+      username: "ganesh",
+      password: "ganesh",
+      usertype: "storemanager",
     };
 
-    fetch('http://localhost:3001/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        // Add any other headers as needed
-      },
-      body: JSON.stringify(uData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Handle the response, e.g., update state or perform other actions
-        console.log('Response from server:', data);
-        if(data.user != undefined){
-        alert("User logged in successfully")
-        dispatch(login(data.user));
-        }
-        else{
-          alert("Failed to login");
+    axios
+      .post("http://localhost:3001/login", uData)
+      .then((response) => {
+        const data = response.data;
+        console.log("Response from server:", data);
+
+        if (data.user !== undefined) {
+          // alert("User logged in successfully")
+          dispatch(login(data.user));
+        } else {
+          // alert("Failed to login");
         }
       })
       .catch((error) => {
         // Handle errors, e.g., display an error message
-        console.error('Error making POST request:', error.message);
-        alert("Failed to login");
+        console.error("Error making POST request:", error.message);
+        // alert("Failed to login");
       });
-
-    // const user = users?.find(
-    //   (u) =>
-    //     u.name === username &&
-    //     u.password === password &&
-    //     u.type === selectedOption
-    // );
-    // if (!user) {
-    //   alert("Invalid username or password");
-    //   return;
-    // }
-    // dispatch(login(user.id));
-
 
     onModalClose(); // Close the modal after login attempt (you may want to handle this differently in a real application)
     navigate("/");
@@ -77,32 +58,16 @@ const Login = ({ isOpen, onClose }) => {
   };
 
   const handleRegister = () => {
-    // // const user = users?.find(
-    // //   (u) => u.name === registerUserName && u.type === registerSelectedOption
-    // // );
-    // if (user) {
-    //   alert("Already existing user, Please Login or use different username");
-    //   return;
-    // }
-    // dispatch(
-    //   addUser({
-    //     id: currentUserId + 1,
-    //     name: registerUserName,
-    //     type: registerSelectedOption,
-    //     password: registerPassword,
-    //   })
-    // );
-
     const postData = {
       username: registerUserName,
       password: registerPassword,
       usertype: registerSelectedOption,
     };
 
-    fetch('http://localhost:3001/register', {
-      method: 'POST',
+    fetch("http://localhost:3001/register", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         // Add any other headers as needed
       },
       body: JSON.stringify(postData),
@@ -110,13 +75,13 @@ const Login = ({ isOpen, onClose }) => {
       .then((response) => response.json())
       .then((data) => {
         // Handle the response, e.g., update state or perform other actions
-        console.log('Response from server:', data);
-        alert("User registered successfully")
+        console.log("Response from server:", data);
+        //alert("User registered successfully")
       })
       .catch((error) => {
         // Handle errors, e.g., display an error message
-        console.error('Error making POST request:', error.message);
-        alert("Failed to register");
+        console.error("Error making POST request:", error.message);
+        //alert("Failed to register");
       });
 
     handleRegisterNavigation();
@@ -165,8 +130,8 @@ const Login = ({ isOpen, onClose }) => {
           required
         >
           <option value="customer">Customer</option>
-          <option value="storemanager">Store Manager</option>
-          <option value="salesmanager">Sales Manager</option>
+          <option value="storemanager">Product Supervisor</option>
+          <option value="salesmanager">Sales Supervisor</option>
         </select>
         <Button
           buttonName="Login"
@@ -214,8 +179,8 @@ const Login = ({ isOpen, onClose }) => {
           required
         >
           <option value="customer">Customer</option>
-          <option value="storemanager">Store Manager</option>
-          <option value="salesmanager">Sales Manager</option>
+          <option value="storemanager">Product Supervisorr</option>
+          <option value="salesmanager">Sales Supervisor</option>
         </select>
 
         <Button

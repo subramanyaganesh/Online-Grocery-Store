@@ -5,26 +5,37 @@ import DisplayItems from "./DisplayItems";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../redux/actions/cartActions";
 import SimpleTemplate from "../../templates/SimpleTemplate";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const HomeDashboard = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { fromHeader = false } = location.state || {};
 
   const dispatch = useDispatch();
   const { selectedCategory: category, products } = useSelector(
     (state) => state.cartReducer
-
   );
   const { loggedInUserId } = useSelector((state) => state.authReducer);
 
-  const handleCart = (itemId) => {
-    const item = products?.find((i) => i.id === itemId);
-    if (isEmpty(loggedInUserId)) {
-      alert("Please Login, to add items to cart");
-      return;
+  const handleCart = (item, type) => {
+    //remove temporary
+    // if (isEmpty(loggedInUserId)) {
+    //   //alert("Please Login, to add items to cart");
+    //   return;
+    // }
+    switch (type) {
+      case "write":
+        //call mongo
+        break;
+      case "read":
+        navigate("/viewReviews", { state: { item: item } });
+        break;
+      default:
+        console.log("item", item);
+        dispatch(addToCart(item));
+        break;
     }
-    dispatch(addToCart(item));
   };
 
   return (

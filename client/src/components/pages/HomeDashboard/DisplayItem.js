@@ -17,17 +17,17 @@ const DisplayItem = ({ item, onClick }) => {
       <Button
         buttonName="Add to Cart"
         buttonStyles={styles.buttonStyle}
-        onClick={() => onClick(item?.id)}
+        onClick={() => onClick(item,'cart')}
       />
        <Button
         buttonName="Write Review"
         buttonStyles={styles.buttonStyle}
-        onClick={() => onClick(item?.id)}
+        onClick={() => onClick(item,'write')}
       />
        <Button
         buttonName="Read Review"
         buttonStyles={styles.buttonStyle}
-        onClick={() => onClick(item?.id)}
+        onClick={() => onClick(item,'read')}
       />
     </div>
   );

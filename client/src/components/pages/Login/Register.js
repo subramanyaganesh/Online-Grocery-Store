@@ -21,7 +21,7 @@ const Register = ({ isOpen, setModalOpen }) => {
       (u) => u.name === registerUserName && u.type === registerSelectedOption
     );
     if (user) {
-      alert("Already existing user, Please Login or use different username");
+      //alert("Already existing user, Please Login or use different username");
       return;
     }
     dispatch(
@@ -32,7 +32,7 @@ const Register = ({ isOpen, setModalOpen }) => {
         password: registerPassword,
       })
     );
-    alert("Registered Successfully");
+    //alert("Registered Successfully");
     handleRegisterNavigation();
   };
   const onModalClose = () => {
@@ -75,8 +75,8 @@ const Register = ({ isOpen, setModalOpen }) => {
             required
           >
             <option value="customer">Customer</option>
-            <option value="storemanager">Store Manager</option>
-            <option value="salesmanager">Sales Manager</option>
+            <option value="storemanager">Product Supervisor</option>
+            <option value="salesmanager">Sales Supervisor</option>
           </select>
 
           <Button
