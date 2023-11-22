@@ -86,6 +86,11 @@ app.post("/viewReviews", (req, res) => {
   mongocontrollers.getReviewsFromDatabase(res, req.body);
 });
 
+app.post("/writeReview", (req, res) => {
+  console.log("write review has a body=", req.body);
+  mongocontrollers.setReviewsToDatabase(res, req.body);
+});
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

@@ -28,6 +28,7 @@ const styles = {
     borderRadius: 12,
     padding: 5,
     margin: 20,
+    cursor: "pointer",
   },
 };
 

@@ -12,8 +12,8 @@ class MongoRepo {
         useUnifiedTopology: true,
       });
 
-      const db = client.db("SmartHomeCustomerReviews");
-      this.myReviews = db.collection("myReviews");
+      const db = client.db("groceryStrore");
+      this.myReviews = db.collection("reviews");
     } catch (error) {
       console.error("Error connecting to MongoDB:", error.message);
       throw error;
@@ -25,22 +25,17 @@ class MongoRepo {
     producttype,
     productprice,
     productmaker,
-    manufacturerRebate,
     storeID,
     retailerpin,
     retailercity,
     retailerstate,
-    productOnSale,
-    userAge,
-    userGender,
-    userOccupation,
     reviewrating,
     reviewdate,
     reviewtext,
     username
   ) {
     try {
-        console.log("This is Mongo Repo");
+      
       await this.getConnection();
       const doc = {
         title: "myReviews",
@@ -48,21 +43,18 @@ class MongoRepo {
         productType: producttype,
         productprice: productprice,
         productmaker: productmaker,
-        manufacturerRebate: manufacturerRebate,
+
         storeID: storeID,
         retailerpin: retailerpin,
         retailercity: retailercity,
         retailerstate: retailerstate,
-        productOnSale: productOnSale,
+
         username: username,
-        userAge: userAge,
-        userGender: userGender,
-        userOccupation: userOccupation,
         reviewRating: parseInt(reviewrating),
         reviewDate: reviewdate,
         reviewText: reviewtext,
       };
-
+      console.log("This is Mongo Repo with doc", doc);
       await this.myReviews.insertOne(doc);
       return "Successful";
     } catch (error) {
@@ -94,16 +86,14 @@ class MongoRepo {
           productType: obj.productType,
           productprice: obj.productprice,
           productmaker: obj.productmaker,
-          manufacturerRebate: obj.manufacturerRebate,
+          
           storeID: obj.storeID,
           retailerpin: obj.retailerpin,
           retailercity: obj.retailercity,
           retailerstate: obj.retailerstate,
-          productOnSale: obj.productOnSale,
+          
           username: obj.username,
-          userAge: obj.userAge,
-          userGender: obj.userGender,
-          userOccupation: obj.userOccupation,
+         
           reviewRating: parseInt(obj.reviewRating),
           reviewDate: obj.reviewDate,
           reviewText: obj.reviewText,

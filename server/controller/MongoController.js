@@ -8,7 +8,10 @@ class MongoController {
   async getReviewsFromDatabase(res, item) {
     try {
       const rows = await this.mongoRepo.selectReview();
-      res.status(200).send(rows[item.productName]?rows[item.productName]:[]);
+      console.log("rows", rows);
+      console.log("item", item);
+      res.status(200).send(rows[item.name]?rows[item.name]:[]);
+     
     } catch (error) {
       console.error("Error executing query:", error.message);
       res.status(500).send("Error executing query");
@@ -22,15 +25,10 @@ class MongoController {
         item.productType,
         item.productPrice,
         item.productMaker,
-        item.manufacturerRebate,
         item.storeID,
         item.retailerPin,
         item.retailerCity,
         item.retailerState,
-        item.productOnSale,
-        item.userAge,
-        item.userGender,
-        item.userOccupation,
         item.reviewRating,
         item.reviewDate,
         item.reviewText,

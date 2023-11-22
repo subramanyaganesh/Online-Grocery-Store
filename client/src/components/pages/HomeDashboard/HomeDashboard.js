@@ -26,7 +26,7 @@ const HomeDashboard = () => {
     // }
     switch (type) {
       case "write":
-        //call mongo
+        navigate("/writeReview", { state: { item: item } });
         break;
       case "read":
         navigate("/viewReviews", { state: { item: item } });

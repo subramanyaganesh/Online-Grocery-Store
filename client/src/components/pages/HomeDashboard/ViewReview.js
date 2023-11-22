@@ -23,7 +23,7 @@ const ViewReview = () => {
         axios
           .post("http://localhost:3001/viewReviews", location.state.item)
           .then((res) => {
-            console.log("Response from server:", res.data);
+            console.log("Response from server in the View:", res.data);
             setViews(res.data);
           })
           .catch((err) => console.log("Error from ViewReview", err))
@@ -65,15 +65,14 @@ const ViewReview = () => {
               <thead>
                 <tr>
                   <th style={textStyle}>Product Price</th>
-                  <th style={textStyle}>Product On Sale</th>
+
                   <th style={textStyle}>Manufacturer Name</th>
-                  <th style={textStyle}>Manufacturer Rebate</th>
+
                   <th style={textStyle}>Rating</th>
                   <th style={textStyle}>Review date</th>
                   <th style={textStyle}>Review Text</th>
                   <th style={textStyle}>UserName</th>
-                  <th style={textStyle}>UserAge</th>
-                  <th style={textStyle}>UserGender</th>
+
                   <th style={textStyle}>StoreId</th>
                   <th style={textStyle}>StoreCity</th>
                   <th style={textStyle}>StoreState</th>
@@ -85,15 +84,14 @@ const ViewReview = () => {
                 {views.map((item, index) => (
                   <tr key={index}>
                     <td style={textStyle}>${item.productprice}</td>
-                    <td style={textStyle}>{item.productOnSale}</td>
+
                     <td style={textStyle}>{item.productmaker}</td>
-                    <td style={textStyle}>{item.manufacturerRebate}</td>
+
                     <td style={textStyle}>{item.reviewRating}</td>
                     <td style={textStyle}>{item.reviewDate}</td>
                     <td style={textStyle}>{item.reviewText}</td>
                     <td style={textStyle}>{item.username}</td>
-                    <td style={textStyle}>{item.userAge}</td>
-                    <td style={textStyle}>{item.userGender}</td>
+
                     <td style={textStyle}>{item.storeID}</td>
                     <td style={textStyle}>{item.retailercity}</td>
                     <td style={textStyle}>{item.retailerstate}</td>

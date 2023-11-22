@@ -9,6 +9,7 @@ import Login from "./components/pages/Login/Login";
 import Order from "./components/pages/Cart/Order";
 import AddProduct from "./components/pages/Product/AddProduct";
 import ViewReview from "./components/pages/HomeDashboard/ViewReview";
+import WriteReview from "./components/pages/HomeDashboard/WriteReview";
 
 //Reading data from API
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/account" element={<Account />} />
         <Route path="/addProduct" element={<AddProduct />} />
         <Route path="/viewReviews" element={<ViewReview />} />
+        <Route path="/writeReview" element={<WriteReview/>} />
         <Route path="*" element={<HomeDashboard />} />
         
         {/* <Route path="/WriteReview" element={<WriteReview />} /> */}
