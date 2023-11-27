@@ -185,7 +185,7 @@ const Login = ({ isOpen, onClose }) => {
           required
         >
           <option value="customer">Customer</option>
-          <option value="storemanager">Product Supervisorr</option>
+          <option value="storemanager">Product Supervisor</option>
           <option value="salesmanager">Sales Supervisor</option>
         </select>
 

@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'root',
+  password: '',
   database: 'react_db_grocery',
 });
 
