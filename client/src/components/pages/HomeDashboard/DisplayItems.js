@@ -1,12 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DisplayItem from "./DisplayItem";
-import { useSelector } from "react-redux";
+
+import { useDispatch, useSelector } from "react-redux";
+import { setProducts } from "../../../redux/actions/cartActions";
 
 const DisplayItems = ({ category, handleCart }) => {
+const dispatch = useDispatch();
+
+
+
   const { products } = useSelector((state) => state.cartReducer);
   const requiredProducts = products.filter(
     (item) => item.category === category.id
   );
+  console.log(products);
+
+  useEffect(() => {
+  
+    const fetchProducts = async () => {
+      try {
+        fetch(`http://localhost:3001/products`)
+        .then(response => response.json())
+        .then(data => {
+          // console.log("dispatch");
+          dispatch(setProducts(data));
+          // console.log('dispatched done');
+        })
+        .catch(error => {
+          // Handle errors, e.g., display an error message
+          console.error('Error making POST request:', error.message);
+        });
+  
+      } catch (error) {
+        // Handle the error if needed
+      }
+    };
+     fetchProducts(); 
+  }, []);
+  
 
   return (
     <div>

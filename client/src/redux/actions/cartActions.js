@@ -43,6 +43,21 @@ const updateProduct = (product) => ({
   payload: product,
 });
 
+const setOrders = (orders) => ({
+  type: "SET_ORDERS",
+  payload: orders,
+});
+
+const setProducts = (products) => ({
+  type: "SET_PRODUCTS",
+  payload: products,
+});
+
+const viewReviews = (productId) => ({
+  type: "VIEW_REVIEWS",
+  payload: productId,
+});
+
 export {
   addToCart,
   removeFromCart,
@@ -53,4 +68,7 @@ export {
   removeProduct,
   updateProduct,
   addProduct,
+  setOrders,
+  setProducts,
+  viewReviews,
 };

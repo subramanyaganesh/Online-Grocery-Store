@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { categories, userTypes } from "../../constants";
@@ -8,6 +8,9 @@ import Button from "./Button";
 import { cancelOrder, removeProduct } from "../../redux/actions/cartActions";
 import Register from "../pages/Login/Register";
 import UpdateProduct from "../pages/Login/UpdateProductModal";
+import { setOrders } from "../../redux/actions/cartActions";
+import apiService from "../../constants/apiService";
+import AddProduct from "../pages/Login/AddProductModal";
 
 const WelcomePage = () => {
   const dispatch = useDispatch();
@@ -24,21 +27,90 @@ const WelcomePage = () => {
     (item) => item.category.toString() === categoryId
   );
 
+  //add modal
+  const [showAddProductForm, setShowAddProductForm] = useState(false);
+  //add modal
+
+  const [isOrderCanceled, setIsOrderCanceled] = useState(true);
+
+  useEffect(() => {
+    console.log("useEffect")
+    const fetchData = async () => {
+      try {
+        const orders = await apiService.fetchOrders();
+        dispatch(setOrders(orders));
+      } catch (error) {
+        // Handle the error if needed
+      }
+    };
+
+    // Call the fetch function when the component mounts
+    if(isOrderCanceled && user?.usertype === userTypes.SALES_MANAGER ){
+      fetchData();
+      console.log("fetching orders")
+      setIsOrderCanceled(false);
+    }
+  }, [isOrderCanceled, user?.usertype]);
+
   const handleCancelOrder = (orderId) => {
-    dispatch(cancelOrder(orderId));
-    //alert(`Canceled order ${orderId}`);
+    setIsOrderCanceled(true);
+    // dispatch(cancelOrder(orderId));
+    //Add post request to cancel order/delete order
+    fetch('http://localhost:3001/delete-order',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // Add any other headers as needed
+  
+      },
+      body: JSON.stringify({OrderId: orderId}),
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Handle the response, e.g., update state or perform other actions
+        console.log('Response from server:', data);
+      })
+      .catch(error => {
+        // Handle errors, e.g., display an error message
+        console.error('Error making POST request:', error.message);
+      });
+  
+    alert(`Canceled Order ${orderId}`);
   };
 
   const handleDeleteProduct = (productId) => {
-    dispatch(removeProduct(productId));
-    //alert(`Product deleted ${productId}`);
+    
+    fetch('http://localhost:3001/delete-product',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // Add any other headers as needed
+  
+      },
+      body: JSON.stringify({id: productId}),
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Handle the response, e.g., update state or perform other actions
+        dispatch(removeProduct(productId));
+      })
+      .catch(error => {
+        // Handle errors, e.g., display an error message
+        console.error('Error making POST request:', error.message);
+      });
+  
+    alert(`Product deleted ${productId}`);
   };
 
   const handleRegisterModal = () => {
     setShowUserRegisterForm(!showUserRegisterForm);
   };
-  const handelAddProduct = () => {
-    navigate("/addProduct");
+
+  const handleAddModal = () => {
+    setShowAddProductForm(!showAddProductForm);
+    
   };
   
 
@@ -63,7 +135,7 @@ const WelcomePage = () => {
       <Button
         buttonName="Add Product"
         buttonStyles={{ ...styles.buttonStyle, marginLeft: 40, marginTop: 40 }}
-         onClick={handelAddProduct}
+         onClick={handleAddModal}
       />
       <div style={styles.formItem}>
         <label htmlFor="delivery-action" style={styles.label}>
@@ -109,6 +181,12 @@ const WelcomePage = () => {
         setModalOpen={setShowProductUpdateForm}
         product={selectedProduct}
       />
+
+      <AddProduct
+        isOpen={showAddProductForm}
+        setModalOpen={setShowAddProductForm}
+      />
+
     </div>
   );
 
@@ -131,22 +209,22 @@ const WelcomePage = () => {
       <h3 style={styles.title}>Orders Placed</h3>
       {orders?.length ? (
         <div style={styles.usersContainer}>
-          {orders?.map((order) => (
-            <div key={order.id} style={styles.itemContainer}>
-              <p style={{ width: 20 }}>{order.id}</p>
-              <p style={{ width: 20 }}>{order.userName}</p>
-              <p style={{ width: 100 }}>{order.items}</p>
+          {orders?.map((orders) => (
+            <div key={orders.id} style={styles.itemContainer}>
+              <p style={{ width: 20 }}>{orders.OrderId}</p>
+              <p style={{ width: 20 }}>{orders.userName}</p>
+              <p style={{ width: 100 }}>{orders.orderName}</p>
               <p style={{ width: 20 }}>
-                {order.deliveryAction || "In Store Pickup"}
+                {orders.deliveryAction || "In Store Pickup"}
               </p>
               <p style={{ width: 200 }}>
-                Ordered on {order.orderedDate?.toString()}
+                Ordered on {orders.orderedDate?.toString()}
               </p>
-              <p>Total: {order.total}</p>
+              <p>Total: {orders.orderPrice}</p>
               <Button
                 buttonName="Cancel"
                 buttonStyles={styles.buttonStyle}
-                onClick={() => handleCancelOrder(order.id)}
+                onClick={() => handleCancelOrder(orders.OrderId)}
               />
             </div>
           ))}

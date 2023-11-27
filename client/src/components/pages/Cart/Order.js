@@ -43,7 +43,7 @@ const Order = () => {
     dispatch(removeAllCartItems());
 
     const customerOrder = {
-      orderId: currentOrderId + 1,
+      // orderId: currentOrderId + 1,
       userName: user.username,
       orderName: itemsToOrder,
       orderprice: totalCount,
@@ -52,17 +52,17 @@ const Order = () => {
       creditCardNo: orderDetails.creditNo,
     };
 
-    dispatch(
-      placeOrder({
-        ...orderDetails,
-        id: currentOrderId + 1,
-        userId: user.id,
-        total: totalCount,
-        userName: user.username,
-        orderedDate: new Date(),
-        items: itemsToOrder,
-      })
-    );
+    // dispatch(
+    //   placeOrder({
+    //     ...orderDetails,
+    //     id: currentOrderId + 1,
+    //     userId: user.id,
+    //     total: totalCount,
+    //     userName: user.username,
+    //     orderedDate: new Date(),
+    //     items: itemsToOrder,
+    //   })
+    // );
     handleCustomerOrder(customerOrder);
   };
 
@@ -158,7 +158,7 @@ const Order = () => {
         <>
           <h2 style={styles.title}>Your Order is placed</h2>
           <p style={{ paddingLeft: 40 }}>
-            Your Order Id {orderDetails.id} is on its way, you will receive it
+            Your Order is on its way, you will receive it
             in 3 days of time
           </p>
         </>
@@ -177,9 +177,9 @@ const Order = () => {
               />
             </div>
             <p style={{ margin: 0, marginBottom: 10 }}>Products Purchased: </p>
-            {cart.map((item, index) => (
+            {cart.map((item) => (
               <DisplayCartItem
-                key={index}
+                // key={index}
                 item={item}
                 containerStyles={styles.itemContainer}
               />

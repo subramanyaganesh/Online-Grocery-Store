@@ -11,10 +11,10 @@ const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { cart } = useSelector((state) => state.cartReducer);
-
+  
   const handleRemoveItem = (itemId) => {
     dispatch(removeFromCart(itemId));
-    //alert(`Removed Item from cart ${itemId}`);
+    alert(`Removed Item from cart ${itemId}`);
   };
 
   const handleCheckout = () => {
@@ -50,17 +50,20 @@ const Cart = () => {
 };
 
 const styles = {
-  title: {
-    color: "black",
-    paddingLeft: 40,
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: 10,
   },
-  divider: {
-    backgroundColor: "black",
-    height: 2,
+  image: {
+    width: 100,
+    height: 100,
   },
   buttonStyle: {
     backgroundColor: "#F9F6EE",
-    marginBottom: 20,
+    paddingTop: 0,
+    paddingBottom: 0,
   },
 };
 

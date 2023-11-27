@@ -32,7 +32,7 @@ const HomeDashboard = () => {
         navigate("/viewReviews", { state: { item: item } });
         break;
       default:
-        console.log("item", item);
+        // console.log("item", item);
         dispatch(addToCart(item));
         break;
     }

@@ -6,7 +6,7 @@ import { updateProduct } from "../../../redux/actions/cartActions";
 const UpdateProduct = ({ isOpen, setModalOpen, product }) => {
   const dispatch = useDispatch();
   const [productDetails, setProductDetails] = useState(product);
-  console.log(product, "in updateform", productDetails);
+  // console.log(product, "in updateform", productDetails);
 
   const handleRegisterNavigation = () => {
     setModalOpen(!isOpen);
@@ -14,10 +14,30 @@ const UpdateProduct = ({ isOpen, setModalOpen, product }) => {
   };
 
   const handleUpdate = () => {
-    dispatch(updateProduct({ ...product, ...productDetails }));
-    //alert("Product Updated Successfully");
+   
+    fetch('http://localhost:3001/edit-product',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // Add any other headers as needed
+      },
+      body: JSON.stringify({ ...product, ...productDetails }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Handle the response, e.g., update state or perform other actions
+        console.log('Response from server:', data);
+        dispatch(updateProduct({ ...product, ...productDetails }));
+      })
+      .catch(error => {
+        // Handle errors, e.g., display an error message
+        console.error('Error making POST request:', error.message);
+      });
+    alert("Product Updated Successfully");
     handleRegisterNavigation();
   };
+   
 
   const onModalClose = () => {
     setProductDetails({});

@@ -16,36 +16,42 @@ const Login = ({ isOpen, onClose }) => {
 
   const [registerUserName, setRegisterUserName] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
-  const [registerSelectedOption, setRegisterSelectedOption] =
-    useState("customer");
+  const [registerSelectedOption, setRegisterSelectedOption] = useState("customer");
 
   const [isRegisterModalOpen, setRegisterModalOpen] = useState(false);
   const { users, currentUserId } = useSelector((state) => state.userReducer);
 
   const handleLogin = () => {
     const uData = {
-      username: "ganesh",
-      password: "ganesh",
-      usertype: "storemanager",
+      username: username,
+      password: password,
+      usertype: selectedOption,
     };
 
-    axios
-      .post("http://localhost:3001/login", uData)
-      .then((response) => {
-        const data = response.data;
-        console.log("Response from server:", data);
-
-        if (data.user !== undefined) {
-          // alert("User logged in successfully")
-          dispatch(login(data.user));
-        } else {
-          // alert("Failed to login");
+    fetch('http://localhost:3001/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // Add any other headers as needed
+      },
+      body: JSON.stringify(uData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response, e.g., update state or perform other actions
+        console.log('Response from server:', data);
+        if(data.user != undefined){
+        alert("User logged in successfully")
+        dispatch(login(data.user));
+        }
+        else{
+          alert("Failed to login");
         }
       })
       .catch((error) => {
         // Handle errors, e.g., display an error message
-        console.error("Error making POST request:", error.message);
-        // alert("Failed to login");
+        console.error('Error making POST request:', error.message);
+        alert("Failed to login");
       });
 
     onModalClose(); // Close the modal after login attempt (you may want to handle this differently in a real application)
@@ -64,10 +70,10 @@ const Login = ({ isOpen, onClose }) => {
       usertype: registerSelectedOption,
     };
 
-    fetch("http://localhost:3001/register", {
-      method: "POST",
+    fetch('http://localhost:3001/register', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         // Add any other headers as needed
       },
       body: JSON.stringify(postData),
@@ -75,13 +81,13 @@ const Login = ({ isOpen, onClose }) => {
       .then((response) => response.json())
       .then((data) => {
         // Handle the response, e.g., update state or perform other actions
-        console.log("Response from server:", data);
-        //alert("User registered successfully")
+        console.log('Response from server:', data);
+        alert("User registered successfully")
       })
       .catch((error) => {
         // Handle errors, e.g., display an error message
-        console.error("Error making POST request:", error.message);
-        //alert("Failed to register");
+        console.error('Error making POST request:', error.message);
+        alert("Failed to register");
       });
 
     handleRegisterNavigation();

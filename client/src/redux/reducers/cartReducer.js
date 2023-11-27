@@ -1,11 +1,12 @@
-import { items } from "../../constants";
+// import { items } from "../../constants";
 
 const initialState = {
   cart: [],
   selectedCategory: {},
   orders: [],
   currentOrderId: 0,
-  products: items,
+  products: [],
+  reviews: [],
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -35,6 +36,8 @@ const cartReducer = (state = initialState, action) => {
       };
     case "ADD_PRODUCT":
       return { ...state, products: [...state.products, action.payload] };
+    case "SET_PRODUCTS":
+      return { ...state, products: action.payload };
     case "DELETE_PRODUCT":
       return {
         ...state,
@@ -48,6 +51,15 @@ const cartReducer = (state = initialState, action) => {
           item.id === action.payload?.id ? { ...item, ...action.payload } : item
         ),
       };
+
+    case "SET_ORDERS":
+      console.log(action.payload);
+      return { ...state, orders: action.payload, currentOrderId: action.payload.length };
+
+    case "VIEW_REVIEWS":
+      console.log(action.payload);
+      return { ...state, reviews: action.payload };  
+    
     default:
       return state;
   }
