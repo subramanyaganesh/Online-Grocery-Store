@@ -37,6 +37,8 @@ const dispatch = useDispatch();
     };
      fetchProducts(); 
   }, []);
+
+  console.log("after api",products);
   
 
   return (
