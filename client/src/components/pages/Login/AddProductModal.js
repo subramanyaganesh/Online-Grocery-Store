@@ -8,7 +8,6 @@ const AddProduct = ({ isOpen, setModalOpen }) => {
   const dispatch = useDispatch();
   const [productDetails, setProductDetails] = useState({});
   const { products } = useSelector((state) => state.cartReducer);
-  
 
   const handleAddNavigation = () => {
     setModalOpen(!isOpen);
@@ -16,35 +15,31 @@ const AddProduct = ({ isOpen, setModalOpen }) => {
     isOpen && onModalClose();
   };
 
-const handleAddProduct = () => {
-    
-    fetch('http://localhost:3001/add-product',
-    {
-      method: 'POST',
+  const handleAddProduct = () => {
+    fetch("http://localhost:3001/add-product", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         // Add any other headers as needed
       },
-      body: JSON.stringify( productDetails ),
+      body: JSON.stringify(productDetails),
     })
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         // Handle the response, e.g., update state or perform other actions
-        console.log('Response from server:', data);
-        dispatch(addProduct( productDetails ));
+        console.log("Response from server:", data);
+        dispatch(addProduct(productDetails));
         setProductDetails({});
       })
-      .catch(error => {
+      .catch((error) => {
         // Handle errors, e.g., display an error message
-        console.error('Error making POST request:', error.message);
+        console.error("Error making POST request:", error.message);
       });
     alert("Product Added Successfully");
     // handleRegisterNavigation();
   };
 
-  
   fetchProducts();
-  
 
   const onModalClose = () => {
     console.log("in modal close");
@@ -70,7 +65,7 @@ const handleAddProduct = () => {
             required
           />
 
-        <label htmlFor="name">Product Name:</label>
+          <label htmlFor="name">Product Name:</label>
           <input
             type="text"
             value={productDetails?.name}
@@ -80,7 +75,7 @@ const handleAddProduct = () => {
             required
           />
 
-            <label htmlFor="price">Product price:</label>
+          <label htmlFor="price">Product price:</label>
           <input
             type="text"
             value={productDetails?.price}
@@ -90,7 +85,7 @@ const handleAddProduct = () => {
             required
           />
 
-            <label htmlFor="image">Product Image:</label>
+          <label htmlFor="image">Product Image:</label>
           <input
             type="text"
             value={productDetails?.image}
@@ -100,17 +95,20 @@ const handleAddProduct = () => {
             required
           />
 
-<label htmlFor="manufacturer">Product manufacturer:</label>
+          <label htmlFor="manufacturer">Product manufacturer:</label>
           <input
             type="text"
             value={productDetails?.manufacturer}
             onChange={(e) =>
-              setProductDetails({ ...productDetails, manufacturer: e.target.value })
+              setProductDetails({
+                ...productDetails,
+                manufacturer: e.target.value,
+              })
             }
             required
           />
 
-<label htmlFor="discount">Product discount:</label>
+          <label htmlFor="discount">Product discount:</label>
           <input
             type="text"
             value={productDetails?.discount}
@@ -120,17 +118,20 @@ const handleAddProduct = () => {
             required
           />
 
- <label htmlFor="available">Product Availabile:</label>
+          <label htmlFor="available">Product Availabile:</label>
           <input
             type="text"
             value={productDetails?.available}
             onChange={(e) =>
-              setProductDetails({ ...productDetails, available: e.target.value })
+              setProductDetails({
+                ...productDetails,
+                available: e.target.value,
+              })
             }
             required
           />
 
-<label htmlFor="onSale">Product onSale:</label>
+          <label htmlFor="onSale">Product onSale:</label>
           <input
             type="text"
             value={productDetails?.onSale}
@@ -140,16 +141,19 @@ const handleAddProduct = () => {
             required
           />
 
-<label htmlFor="manfucturerRebate">Product manfucturerRebate:</label>
+          <label htmlFor="manfucturerRebate">Product manfucturerRebate:</label>
           <input
             type="text"
             value={productDetails?.manufacturerRebate}
             onChange={(e) =>
-              setProductDetails({ ...productDetails, manufacturerRebate: e.target.value })
+              setProductDetails({
+                ...productDetails,
+                manufacturerRebate: e.target.value,
+              })
             }
             required
           />
-          
+
           <label htmlFor="category">Product category:</label>
           <input
             type="text"
@@ -160,8 +164,6 @@ const handleAddProduct = () => {
             required
           />
 
-
-          
           <Button
             buttonName="Add Product"
             onClick={handleAddProduct}

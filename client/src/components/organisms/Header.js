@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Input } from 'antd';
+import { Input } from "antd";
 
 import { useNavigate } from "react-router-dom";
 import {
@@ -67,13 +67,12 @@ const Header = () => {
     // For now, let's navigate to a search results page with the search query
     navigate(`/search?query=${searchQuery}`);
   };
-  
 
   return (
     <div style={headerStyle}>
       {!isEmpty(loggedInUserId) ? (
         <>
-        <Input
+          <Input
             style={{ width: 200, margin: 20, marginRight: 10 }}
             className="search-input"
             placeholder="Search..."
@@ -96,6 +95,13 @@ const Header = () => {
               <UserOutlined style={{ color: "black", paddingRight: 6 }} />
             )}
           />
+          {user.usertype === "storemanager" ? (
+            <Button
+              buttonName="Analytics"
+              onClick={() => handleNavigation("analytics")}
+            />
+          ) : null}
+
           <Button
             buttonName="Logout"
             onClick={handleLogout}

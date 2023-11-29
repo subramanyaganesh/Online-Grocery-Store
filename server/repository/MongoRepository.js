@@ -35,7 +35,6 @@ class MongoRepo {
     username
   ) {
     try {
-      
       await this.getConnection();
       const doc = {
         title: "myReviews",
@@ -86,14 +85,14 @@ class MongoRepo {
           productType: obj.productType,
           productprice: obj.productprice,
           productmaker: obj.productmaker,
-          
+
           storeID: obj.storeID,
           retailerpin: obj.retailerpin,
           retailercity: obj.retailercity,
           retailerstate: obj.retailerstate,
-          
+
           username: obj.username,
-         
+
           reviewRating: parseInt(obj.reviewRating),
           reviewDate: obj.reviewDate,
           reviewText: obj.reviewText,
@@ -107,6 +106,48 @@ class MongoRepo {
       reviews = null;
       return reviews;
     }
+  }
+
+  async selectReviewForChart() {
+    await this.getConnection();
+    const pipeline = [
+      {
+        $group: {
+          _id: {
+            retailerpin: "$retailerpin",
+            productName: "$productName",
+            retailercity: "$retailercity",
+            reviewRating: "$reviewRating",
+          },
+          reviewCount: { $sum: 1 },
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          retailerpin: "$_id.retailerpin",
+          productName: "$_id.productName",
+          retailercity: "$_id.retailercity",
+          reviewRating: "$_id.reviewRating",
+          reviewCount: "$reviewCount",
+        },
+      },
+      { $sort: { reviewCount: -1 } },
+    ];
+
+    const result = await this.myReviews.aggregate(pipeline).toArray();
+
+    
+    const reviewList = result.map((item) => ({
+      productName: item.productName,
+      retailerpin: item.retailerpin,
+      retailercity: item.retailercity,
+      reviewCount: item.reviewCount,
+
+      // Add other fields as needed
+    }));
+    console.log("reviewList from repo", reviewList);
+    return reviewList;
   }
 }
 

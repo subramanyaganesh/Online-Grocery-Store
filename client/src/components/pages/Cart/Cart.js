@@ -11,7 +11,7 @@ const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { cart } = useSelector((state) => state.cartReducer);
-  
+
   const handleRemoveItem = (itemId) => {
     dispatch(removeFromCart(itemId));
     alert(`Removed Item from cart ${itemId}`);

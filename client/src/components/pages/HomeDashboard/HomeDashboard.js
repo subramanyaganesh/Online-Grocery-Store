@@ -19,11 +19,10 @@ const HomeDashboard = () => {
   const { loggedInUserId } = useSelector((state) => state.authReducer);
 
   const handleCart = (item, type) => {
-    //remove temporary
-    // if (isEmpty(loggedInUserId)) {
-    //   //alert("Please Login, to add items to cart");
-    //   return;
-    // }
+    if (isEmpty(loggedInUserId)) {
+      alert("Please Login, to add items to cart");
+      return;
+    }
     switch (type) {
       case "write":
         navigate("/writeReview", { state: { item: item } });

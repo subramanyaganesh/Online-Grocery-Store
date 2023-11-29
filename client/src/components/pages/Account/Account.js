@@ -11,12 +11,14 @@ const Account = () => {
   const { user } = useSelector((state) => state.authReducer);
   const { loggedInUserId } = useSelector((state) => state.authReducer);
   const { orders } = useSelector((state) => state.cartReducer);
-  const userOrders = orders?.filter((order) => order.userName === user.username);
+  const userOrders = orders?.filter(
+    (order) => order.userName === user.username
+  );
 
   const [isOrderCanceled, setIsOrderCanceled] = useState(true);
 
   useEffect(() => {
-    console.log("useEffect")
+    console.log("useEffect");
     const fetchData = async () => {
       try {
         const orders = await apiService.fetchOrders();
@@ -27,41 +29,37 @@ const Account = () => {
     };
 
     // Call the fetch function when the component mounts
-    if(isOrderCanceled){
+    if (isOrderCanceled) {
       fetchData();
       setIsOrderCanceled(false);
     }
   }, [isOrderCanceled]);
-
 
   console.log(orders);
   const handleCancelOrder = (orderId) => {
     setIsOrderCanceled(true);
     // dispatch(cancelOrder(orderId));
     //Add post request to cancel order/delete order
-    fetch('http://localhost:3001/delete-order',
-    {
-      method: 'POST',
+    fetch("http://localhost:3001/delete-order", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         // Add any other headers as needed
-  
       },
-      body: JSON.stringify({OrderId: orderId}),
+      body: JSON.stringify({ OrderId: orderId }),
     })
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         // Handle the response, e.g., update state or perform other actions
-        console.log('Response from server:', data);
+        console.log("Response from server:", data);
       })
-      .catch(error => {
+      .catch((error) => {
         // Handle errors, e.g., display an error message
-        console.error('Error making POST request:', error.message);
+        console.error("Error making POST request:", error.message);
       });
-  
+
     alert(`Canceled Order ${orderId}`);
   };
-
 
   return (
     <SimpleTemplate>

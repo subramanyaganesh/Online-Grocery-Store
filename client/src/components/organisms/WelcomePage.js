@@ -15,7 +15,7 @@ import AddProduct from "../pages/Login/AddProductModal";
 const WelcomePage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loggedInUserId , user} = useSelector((state) => state.authReducer);
+  const { loggedInUserId, user } = useSelector((state) => state.authReducer);
   // const { users } = useSelector((state) => state.userReducer);
   const { orders, products } = useSelector((state) => state.cartReducer);
   // const user = users?.find((u) => u.id === loggedInUserId);
@@ -34,7 +34,7 @@ const WelcomePage = () => {
   const [isOrderCanceled, setIsOrderCanceled] = useState(true);
 
   useEffect(() => {
-    console.log("useEffect")
+    console.log("useEffect");
     const fetchData = async () => {
       try {
         const orders = await apiService.fetchOrders();
@@ -45,9 +45,9 @@ const WelcomePage = () => {
     };
 
     // Call the fetch function when the component mounts
-    if(isOrderCanceled && user?.usertype === userTypes.SALES_MANAGER ){
+    if (isOrderCanceled && user?.usertype === userTypes.SALES_MANAGER) {
       fetchData();
-      console.log("fetching orders")
+      console.log("fetching orders");
       setIsOrderCanceled(false);
     }
   }, [isOrderCanceled, user?.usertype]);
@@ -56,51 +56,46 @@ const WelcomePage = () => {
     setIsOrderCanceled(true);
     // dispatch(cancelOrder(orderId));
     //Add post request to cancel order/delete order
-    fetch('http://localhost:3001/delete-order',
-    {
-      method: 'POST',
+    fetch("http://localhost:3001/delete-order", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         // Add any other headers as needed
-  
       },
-      body: JSON.stringify({OrderId: orderId}),
+      body: JSON.stringify({ OrderId: orderId }),
     })
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         // Handle the response, e.g., update state or perform other actions
-        console.log('Response from server:', data);
+        console.log("Response from server:", data);
       })
-      .catch(error => {
+      .catch((error) => {
         // Handle errors, e.g., display an error message
-        console.error('Error making POST request:', error.message);
+        console.error("Error making POST request:", error.message);
       });
-  
+
     alert(`Canceled Order ${orderId}`);
   };
 
   const handleDeleteProduct = (productId) => {
-    
-    fetch('http://localhost:3001/delete-product',
-    {
-      method: 'POST',
+    fetch("http://localhost:3001/delete-product", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         // Add any other headers as needed
-  
       },
-      body: JSON.stringify({id: productId}),
+      body: JSON.stringify({ id: productId }),
     })
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         // Handle the response, e.g., update state or perform other actions
         dispatch(removeProduct(productId));
       })
-      .catch(error => {
+      .catch((error) => {
         // Handle errors, e.g., display an error message
-        console.error('Error making POST request:', error.message);
+        console.error("Error making POST request:", error.message);
       });
-  
+
     alert(`Product deleted ${productId}`);
   };
 
@@ -110,9 +105,7 @@ const WelcomePage = () => {
 
   const handleAddModal = () => {
     setShowAddProductForm(!showAddProductForm);
-    
   };
-  
 
   const handleUpdateModal = (product) => {
     setShowProductUpdateForm(!showProductUpdateForm);
@@ -135,7 +128,7 @@ const WelcomePage = () => {
       <Button
         buttonName="Add Product"
         buttonStyles={{ ...styles.buttonStyle, marginLeft: 40, marginTop: 40 }}
-         onClick={handleAddModal}
+        onClick={handleAddModal}
       />
       <div style={styles.formItem}>
         <label htmlFor="delivery-action" style={styles.label}>
@@ -186,7 +179,6 @@ const WelcomePage = () => {
         isOpen={showAddProductForm}
         setModalOpen={setShowAddProductForm}
       />
-
     </div>
   );
 

@@ -11,6 +11,7 @@ import AddProduct from "./components/pages/Product/AddProduct";
 import { setProducts } from "./redux/actions/cartActions";
 import ViewReview from "./components/pages/HomeDashboard/ViewReview";
 import WriteReview from "./components/pages/HomeDashboard/WriteReview";
+import Analytics from "./components/pages/HomeDashboard/Analytics";
 
 //Reading data from API
 const App = () => {
@@ -50,6 +51,7 @@ const App = () => {
         <Route path="/addProduct" element={<AddProduct />} />
         <Route path="/viewReviews" element={<ViewReview />} />
         <Route path="/writeReview" element={<WriteReview/>} />
+        <Route path="/analytics" element={<Analytics/>} />
         <Route path="*" element={<HomeDashboard />} />
         
         {/* <Route path="/WriteReview" element={<WriteReview />} /> */}
