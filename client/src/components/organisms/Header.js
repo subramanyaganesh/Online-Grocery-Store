@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Input } from "antd";
+
+// import { Input } from 'antd';
+import { AutoComplete } from "antd";
+
 
 import { useNavigate } from "react-router-dom";
 import {
@@ -16,6 +19,7 @@ import { isEmpty } from "../../lib/helpers";
 import { logout } from "../../redux/actions/authActions";
 import Login from "../pages/Login/Login";
 import { removeAllCartItems } from "../../redux/actions/cartActions";
+import DisplayItem from "../pages/HomeDashboard/DisplayItem";
 
 const headerStyle = {
   backgroundColor: "#F9F6EE",
@@ -36,7 +40,7 @@ const Header = () => {
   const navigate = useNavigate();
   const { loggedInUserId, user } = useSelector((state) => state.authReducer);
   // const { users } = useSelector((state) => state.userReducer);
-  const { cart } = useSelector((state) => state.cartReducer);
+  const { cart, products } = useSelector((state) => state.cartReducer);
   // const user = users?.find((u) => u.id === loggedInUserId);
   const [isModalOpen, setModalOpen] = useState(false);
 
@@ -62,23 +66,37 @@ const Header = () => {
     handleLoginModal();
   };
 
-  const handleSearch = () => {
-    // You can perform any search-related logic here
-    // For now, let's navigate to a search results page with the search query
-    navigate(`/search?query=${searchQuery}`);
+  const handleSearch = (value, product) => {
+    // Perform any search-related logic here
+    // For now, navigate to the product details page with the selected product ID
+    setSearchQuery(product.label);
+    navigate(`/search`, {
+      state: { product: product },
+    });
   };
 
   return (
     <div style={headerStyle}>
       {!isEmpty(loggedInUserId) ? (
         <>
-          <Input
-            style={{ width: 200, margin: 20, marginRight: 10 }}
-            className="search-input"
-            placeholder="Search..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            onPressEnter={handleSearch}
+        <AutoComplete
+           style={{ width: 200, margin: 20, marginRight: 10 }}
+           className="search-input"
+           placeholder="Search..."
+           options={products
+             .filter((product) =>
+               product.name.toLowerCase().includes(searchQuery.toLowerCase())
+             )
+             .map((product) => ({
+               label: product.name,
+               value: product.id,
+             }))
+           }
+           value={searchQuery}
+           onChange={(value) => setSearchQuery(value)}
+           onSelect={(value, product) => handleSearch(value, product)}
+           
+
           />
           <p style={welcomeText}>Hello, {user.username}</p>
           <Button

@@ -7,6 +7,8 @@ import { addToCart } from "../../../redux/actions/cartActions";
 import SimpleTemplate from "../../templates/SimpleTemplate";
 import { useLocation, useNavigate } from "react-router-dom";
 
+
+
 const HomeDashboard = () => {
   const location = useLocation();
   const navigate = useNavigate();

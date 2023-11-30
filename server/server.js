@@ -28,10 +28,12 @@ app.use((req, res, next) => {
 
 // MySQL connection setup (replace with your MySQL credentials)
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "react_db_grocery",
+
+  host: 'localhost',
+  user: 'root',
+  password: 'root',
+  database: 'react_db_grocery',
+
 });
 
 // Connect to MySQL

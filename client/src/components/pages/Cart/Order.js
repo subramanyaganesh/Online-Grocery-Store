@@ -15,6 +15,7 @@ const Order = () => {
   const [map, setMap] = useState(null);
   const [markers, setMarkers] = useState([]);
   const [selectedPlace, setSelectedPlace] = useState(null);
+  const [selectedPlaceMarker, setSelectedPlaceMarker] = useState(null);
   const { loggedInUserId, user } = useSelector((state) => state.authReducer);
   const { cart, currentOrderId } = useSelector((state) => state.cartReducer);
   const totalCount = cart.reduce((sum, product) => sum + product.price, 0);
@@ -42,6 +43,8 @@ const Order = () => {
     setOrderDetails({ ...orderDetails, id: currentOrderId + 1 });
     dispatch(removeAllCartItems());
 
+    console.log("when order is placed", orderDetails);
+
     const customerOrder = {
       // orderId: currentOrderId + 1,
       userName: user.username,
@@ -50,6 +53,7 @@ const Order = () => {
       deliveryAction: orderDetails.deliveryAction,
       orderedDate: new Date(),
       creditCardNo: orderDetails.creditNo,
+      address: JSON.stringify(orderDetails.address || selectedPlace),
     };
 
     // dispatch(
@@ -120,6 +124,7 @@ const Order = () => {
           placesService.nearbySearch(request, (results, status) => {
             if (status === window.google.maps.places.PlacesServiceStatus.OK) {
               setPlaces(results);
+              
               const placeMarkers = results.map((place) => {
                 return new window.google.maps.Marker({
                   position: place.geometry.location,
@@ -237,15 +242,19 @@ const Order = () => {
                     <select
                       id="type"
                       value={selectedPlace}
-                      onChange={(e) => setSelectedPlace(e.target.value)}
+                      onChange={(e) =>{
+                        console.log("selected place", e.target.value)
+                        setSelectedPlace(e.target.value)}
+                      } 
                       defaultValue="---"
                       required
+                  
                     >
                       <option value="---">---</option>
                       {places
                         .filter((place) => place !== "" && place !== "")
                         .map((place, index) => (
-                          <option key={index} value={place.name}>
+                          <option key={index} value={place.vicinity}>
                             {place.name}
                           </option>
                         ))}
@@ -354,6 +363,7 @@ const Order = () => {
     </SimpleTemplate>
   );
 };
+
 
 const styles = {
   title: {
