@@ -79,25 +79,6 @@ const Header = () => {
     <div style={headerStyle}>
       {!isEmpty(loggedInUserId) ? (
         <>
-        <AutoComplete
-           style={{ width: 200, margin: 20, marginRight: 10 }}
-           className="search-input"
-           placeholder="Search..."
-           options={products
-             .filter((product) =>
-               product.name.toLowerCase().includes(searchQuery.toLowerCase())
-             )
-             .map((product) => ({
-               label: product.name,
-               value: product.id,
-             }))
-           }
-           value={searchQuery}
-           onChange={(value) => setSearchQuery(value)}
-           onSelect={(value, product) => handleSearch(value, product)}
-           
-
-          />
           <p style={welcomeText}>Hello, {user.username}</p>
           <Button
             buttonName="Home"
@@ -137,6 +118,23 @@ const Header = () => {
           )}
         />
       )}
+      <AutoComplete
+           style={{ width: 200, margin: 20, marginRight: 10 }}
+           className="search-input"
+           placeholder="Search..."
+           options={products
+             .filter((product) =>
+               product.name.toLowerCase().includes(searchQuery.toLowerCase())
+             )
+             .map((product) => ({
+               label: product.name,
+               value: product.id,
+             }))
+           }
+           value={searchQuery}
+           onChange={(value) => setSearchQuery(value)}
+           onSelect={(value, product) => handleSearch(value, product)}
+          />
       <Button
         buttonName={`Cart (${cart?.length})`}
         onClick={() => handleNavigation("cart")}

@@ -13,6 +13,7 @@ import ViewReview from "./components/pages/HomeDashboard/ViewReview";
 import WriteReview from "./components/pages/HomeDashboard/WriteReview";
 import Analytics from "./components/pages/HomeDashboard/Analytics";
 import DisplaySearchItem from "./components/pages/HomeDashboard/DisplaySearchItem";
+import Recommend from "./components/pages/HomeDashboard/Recommend";
 
 //Reading data from API
 const App = () => {
@@ -53,7 +54,8 @@ const App = () => {
         <Route path="/viewReviews" element={<ViewReview />} />
         <Route path="/writeReview" element={<WriteReview/>} />
         <Route path="/analytics" element={<Analytics/>} />
-        <Route path="/search" element={<DisplaySearchItem />} />
+        
+        <Route path="/recommend" element={<Recommend />} />
         <Route path="*" element={<HomeDashboard />} />
         
         {/* <Route path="/WriteReview" element={<WriteReview />} /> */}
@@ -66,6 +68,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomeDashboard />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/search" element={<DisplaySearchItem />} />
         <Route path="*" element={<HomeDashboard />} />
         
       </Routes>
