@@ -100,6 +100,12 @@ const Header = () => {
               onClick={() => handleNavigation("analytics")}
             />
           ) : null}
+          {user.usertype === "customer" ? (
+            <Button
+              buttonName="Recommended for you"
+              onClick={() => handleNavigation("recommend")}
+            />
+          ) : null}
 
           <Button
             buttonName="Logout"

@@ -54,7 +54,6 @@ const App = () => {
         <Route path="/viewReviews" element={<ViewReview />} />
         <Route path="/writeReview" element={<WriteReview/>} />
         <Route path="/analytics" element={<Analytics/>} />
-        
         <Route path="/recommend" element={<Recommend />} />
         <Route path="*" element={<HomeDashboard />} />
         
