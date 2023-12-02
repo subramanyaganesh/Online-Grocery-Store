@@ -101,10 +101,17 @@ const Header = () => {
             />
           ) : null}
           {user.usertype === "customer" ? (
-            <Button
+            <>
+              <Button
               buttonName="Recommended for you"
               onClick={() => handleNavigation("recommend")}
-            />
+              />
+              <Button
+              buttonName="Trending"
+              onClick={() => handleNavigation("trending")}
+              />
+            </>
+            
           ) : null}
 
           <Button

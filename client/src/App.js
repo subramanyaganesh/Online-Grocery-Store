@@ -14,6 +14,7 @@ import WriteReview from "./components/pages/HomeDashboard/WriteReview";
 import Analytics from "./components/pages/HomeDashboard/Analytics";
 import DisplaySearchItem from "./components/pages/HomeDashboard/DisplaySearchItem";
 import Recommend from "./components/pages/HomeDashboard/Recommend";
+import Trending from "./components/pages/HomeDashboard/Trending";
 
 //Reading data from API
 const App = () => {
@@ -55,6 +56,7 @@ const App = () => {
         <Route path="/writeReview" element={<WriteReview/>} />
         <Route path="/analytics" element={<Analytics/>} />
         <Route path="/recommend" element={<Recommend />} />
+        <Route path="/trending" element={<Trending />} />
         <Route path="*" element={<HomeDashboard />} />
         
         {/* <Route path="/WriteReview" element={<WriteReview />} /> */}
